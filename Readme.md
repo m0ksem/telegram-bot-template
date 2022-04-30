@@ -3,6 +3,20 @@
 
 ## Deploy
 
+### Github actions (deploy with SSH)
+Setup ssh:
+- `ssh-keygen -t rsa -b 4096 -C "your_email@example.com"` - generate ssh key
+- `cat .ssh/id_rsa.pub | ssh b@B 'cat >> .ssh/authorized_keys'` - add key to authorized_keys for deployment
+- `clip < ~/.ssh/id_rsa` - copy private ssh key and past in `PRIVATE_KEY` github secret 
+
+You need to set following secrets in Github repository settings: 
+- `DEPLOY_BRANCH` - branch from where source code must be pulled
+- `DEPLOY_PATH` - path on server where to store repository
+- `HOST` - server host ip
+- `PORT` - ssh port (default 22)
+- `USERNAME` - ssh user on server 
+- `PRIVATE_KEY` - private key of ssh user on server
+
 ### Run as daemon
 We use [pm2](https://pm2.keymetrics.io/) that handle background process. This is useful if you have many bot to deploy.
 
