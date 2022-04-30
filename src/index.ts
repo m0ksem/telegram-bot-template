@@ -1,3 +1,4 @@
 import 'dotenv/config'
+import { createBot } from './bot'
 
-console.log(`Hello, ${process.env.USER}!`)
+createBot(process.env.BOT_TOKEN).launch().then(() => console.log('Bot started'))
