@@ -6,7 +6,7 @@
 ### Github actions (deploy with SSH)
 Setup new ssh key for this repository:
 - `ssh-keygen -t rsa -f ~/.ssh/github-repo-name` - generate ssh key
-- `cat ~/.ssh/github-repo-name | ssh b@B 'cat >> ~/.ssh/authorized_keys'` - add key to authorized_keys for deployment
+- `cat ~/.ssh/github-repo-name.pub | ssh b@B 'cat >> ~/.ssh/authorized_keys'` - add key to authorized_keys for deployment
 - `cat < ~/.ssh/github-repo-name` - copy private ssh key (with comments) and past in `PRIVATE_KEY` github secret 
 
 You need to set following secrets in Github repository settings: 
